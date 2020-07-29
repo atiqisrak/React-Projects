@@ -3,29 +3,29 @@ import React, {Component} from 'react';
 class Application extends Component {
 
     constructor(props){
-        super (props);
+        super(props);
 
-    }
-
-    componentWillMount(props, state){
-
-    }
-    componentDidMount(props,state){
-        console.log("Mounted with", props, state);
-    }
-
-    componentWillReceiveProps(props){
-
-    }
-    componentWillUpdate(props, state){
-        if(this.props.name !== props.name){
-            //do something
+        this.state = {
+            count: 0
         }
     }
-    componentDidUpdate(props, state){
-        
+
+    handleClick = () => {
+        this.setState({count: this.state.count + 1});
     }
 
+    render(){
+        let {count} = this.state;
+
+        return(
+            <div>
+                <h1> You have clicked this button {count} times</h1>
+                <span>
+                    <button onClick={() => this.handleClick()}>Click Me</button>
+                </span>
+            </div>
+        );
+    }
 }
 
 export default Application;
